@@ -10,7 +10,7 @@
 				<input type="text" class="input-text" placeholder="输入角色的名称"  name="r_name">
 			</div>
 		</div>
-        <div class="row cl">
+        <!-- <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">状态：</label>
             <div class="formControls col-xs-8 col-sm-9 skin-minimal">
                 <div class="radio-box">
@@ -22,7 +22,7 @@
                     <label for="sex-2">关闭</label>
                 </div>
             </div>
-        </div>
+        </div> -->
 		<div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">备注：</label>
             <div class="formControls col-xs-8 col-sm-9">

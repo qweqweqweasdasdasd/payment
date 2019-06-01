@@ -43,4 +43,11 @@ class PlatformRepository extends BaseRepository
     {
         return Platform::find($id);
     }
+
+    //从中间表获取到所有启用的支付方式
+    public function GetPlatformPayproductIdAndName($pl_id)
+    {
+        $platform = Platform::find($pl_id);
+        return $platform->payproducts()->where('status',1)->get();      
+    }
 }

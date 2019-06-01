@@ -10,7 +10,7 @@
 		<button type="submit" class="btn btn-success" ><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
 	</div>
 	</form>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="add('添加角色','/admin/role/create','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a>&nbsp;&nbsp;关闭了角色之后管理员登录不了</span> <span class="r">共有数据：<strong>{{$count}}</strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="add('添加角色','/admin/role/create','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a></span> <span class="r">共有数据：<strong>{{$count}}</strong> 条</span> </div>
 	<table class="table table-border table-bordered table-bg">
 		<thead>
 			<tr>
@@ -21,7 +21,7 @@
 				<th width="100">角色名称</th>
 				<th width="280">管理员</th>
 				<th>备注</th>
-				<th width="100">状态</th>
+				<!-- <th width="100">状态</th> -->
 				<th width="100">操作</th>
 			</tr>
 		</thead>
@@ -36,7 +36,7 @@
 				@endforeach
 				</td>
 				<td>{{$v->desc}}</td>
-				<td class="td-status">{!! CommonStatus($v->status) !!}</td>
+				<!-- <td class="td-status">{!! CommonStatus($v->status) !!}</td> -->
 				<td class="td-manage">
 					<a style="text-decoration:none" onclick="dis('分配权限','/admin/role/distribute/{{$v->r_id}}','800','500')" href="javascript:;" title="分配权限"><i class="Hui-iconfont">&#xe667;</i></a> <a title="编辑" href="javascript:;" onclick="edit('角色编辑','/admin/role/{{$v->r_id}}/edit','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
 				 	<a title="删除" href="javascript:;" onclick="del(this,'{{$v->r_id}}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>

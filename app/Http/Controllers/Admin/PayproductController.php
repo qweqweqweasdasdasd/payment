@@ -23,7 +23,7 @@ class PayproductController extends Controller
     {
         $nav = $this->payproductRepository->CommonNav($request->path());
         $payproducts = $this->payproductRepository->GetPayproducts();
-       
+        //dump($payproducts);
         return view('admin.payproduct.index',compact('nav','payproducts'));
     }
 
@@ -82,7 +82,7 @@ class PayproductController extends Controller
             'roll_id'=>$request->get('roll_id'),
             'status'=>$request->get('status'),
             'roll_range'=> $request->get('roll_range'),
-            
+            'pay_type' => $request->get('pay_type'),
             'desc'=>$request->get('desc')
         ];
 

@@ -1,11 +1,11 @@
 <?php
 
 Route::get('/login','Admin\LoginController@index')->name('login');  //后台管理--登录
-Route::post('/login','Admin\LoginController@sigIn');                //后台管理--登录验证
 Route::get('/logout','Admin\LoginController@logout');                //后台管理--退出登录
+Route::post('/login','Admin\LoginController@sigIn');                //后台管理--登录验证
 
 //设置auth中间件有back的guard设置
-Route::group(['middleware'=>'auth:back'],function(){
+Route::group(['middleware'=>['auth:back','SSO']],function(){
     
     Route::get('/index','Admin\IndexController@index');                 //后台管理--首页
     Route::get('/welcome','Admin\IndexController@welcome');             //后台管理--welcome
@@ -31,5 +31,6 @@ Route::group(['middleware'=>'auth:back'],function(){
     Route::match(['get','post'],'/platform/disaccount/{pl_id}','Admin\PlatformController@disaccount'); //后台管理--平台分配支付方式 (多对多)
     Route::resource('/platform','Admin\PlatformController');            //后台管理--平台 (管理员和平台是[逆一对多]) (平台和管理员是一对多) 
 });
+
 
 

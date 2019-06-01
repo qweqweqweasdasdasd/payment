@@ -40,9 +40,7 @@ class LoginController extends Controller
         //管理员状态 1 开启 2 关闭
         if($this->managerRepository->CurrentManager()->status == 2){
             return Until::Result(config('code.resource.error'),config('code.msg.1000'));
-        };        
-
-        //单点登录  ??
+        };         
 
         //记录 ip 最后登录时间 登录次数
         $data = [

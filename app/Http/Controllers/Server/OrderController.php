@@ -53,6 +53,7 @@ class OrderController extends Controller
         return strtoupper(md5(uniqid('laravel_',true)));
     }
 
+
     /**
      * (以金额,平台id,和支付产品,)实际支付金额,金额池.判断金额池不满时,添加金额
      * 拿到一个实际支付金额(金额池),小数偏动的实际支付金额,保存到数据库内,状态为生成订单,

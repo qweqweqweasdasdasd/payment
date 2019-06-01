@@ -9,7 +9,7 @@ class Payproduct extends Model
     protected $primaryKey = 'p_id';
 	protected $table = 'payproduct';
     protected $fillable = [
-    	'sort_id','pay_name','pay_icon','roll_id','roll_info','status','desc'
+    	'sort_id','pay_name','pay_icon','roll_id','roll_info','status','desc','pay_type'
     ];
 
     //支付产品和平台的多对多关系建立

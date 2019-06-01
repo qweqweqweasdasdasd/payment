@@ -13,7 +13,7 @@
 			<dd>
 				<ul>
 					<li><a data-href="/admin/order" data-title="支付列表" href="javascript:void(0)">支付列表</a></li>
-					<li><a data-href="picture-list.html" data-title="补单列表" href="javascript:void(0)">补单列表</a></li>
+					<li><a data-href="http://www.payment.cc/order-budan.html" data-title="补单列表" href="javascript:void(0)">补单列表</a></li>
 				</ul>
 			</dd>
 		</dl>

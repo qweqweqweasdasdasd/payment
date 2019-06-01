@@ -15,12 +15,14 @@
 					<th width="50">排序</th>
 					<th width="100">支付产品名称</th>
 					<th width="120">Icon</th>
+					<th width="100">支付标识</th>
 					<th >描述</th>
-                   
+
                     <th width="180">循环方式</th>
                     
+					<!-- <th width="120">创建时间</th> -->
 					<th width="60">状态</th>
-					<th width="120">操作</th>
+					<th width="100">操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,9 +31,11 @@
 					<td width="70"><input type="text" value="{{$v->sort_id}}" class="input-text radius size-MINI" style="text-align:center"></td>
                     <td>{{$v->pay_name}}</td>
                     <td ><img src="{{config('code.payicon.'.$k.'.1')}}" width="70"></td>
+					<td >{{$v->pay_type}}</td>
                     <td>{{$v->desc}}</td>
 					
 					<td>{!! circulation_show($v->roll_id,$v->roll_range) !!}</td>
+					<!-- <td>{{$v->created_at->toFormattedDateString()}}</td> -->
 					<td class="td-status" p_id="{{$v->p_id}}">{!! CommonStatus($v->status) !!}</td>
 					<td class="f-14 td-manage">
 						

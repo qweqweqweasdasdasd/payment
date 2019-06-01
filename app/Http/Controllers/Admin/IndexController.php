@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Libs\Platform;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\ManagerRepository;
@@ -17,10 +18,12 @@ class IndexController extends Controller
     }
 
     //后台管理--首页
+    use Platform;
     public function index()
     {
-        
-        return view('admin.index.index');
+        $pf = $this->GetPlatformName();
+        //dump($pf);
+        return view('admin.index.index',compact('pf'));
     }
 
     //后台管理--welcome 

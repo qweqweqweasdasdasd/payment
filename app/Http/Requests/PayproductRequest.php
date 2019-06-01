@@ -14,7 +14,8 @@ class PayproductRequest extends FormRequest
         'pay_icon' => 'required|integer',
         'roll_id' => 'required|integer',
         'status' => 'required|integer',
-        'desc' => 'max:200'
+        'desc' => 'max:200',
+        'pay_type' => 'required|unique:payproduct'
     ];
 
     //自定义错误信息
@@ -32,7 +33,9 @@ class PayproductRequest extends FormRequest
         'roll_id.integer' => '循环id格式不对!',
         'status.required' => '状态必须存在',
         'status.integer' => '状态格式不对',
-        'desc.max' => '描述不得超出200个字符!'
+        'desc.max' => '描述不得超出200个字符!',
+        'pay_type.required' => '支付方式必须存在!',
+        'pay_type.unique' => '支付方式不可重复!'
     ];
 
     /**

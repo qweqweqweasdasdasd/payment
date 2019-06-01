@@ -54,6 +54,13 @@ class ManagerRequest extends FormRequest
             $rules['password'] = '';
             $rules['password_confirmation'] = '';
         }
+        //超级管理员验证
+        if(Request::input('mg_id') == 1){
+            $rules = [
+                'mg_name' => 'required|between:2,16',
+                'status' => 'required|integer'
+            ];
+        };
         return $rules;
     }
 

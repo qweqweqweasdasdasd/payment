@@ -40,8 +40,8 @@
                     <th width="100">用户</th>
                     <th width="100">平台</th>
                     <th width="120">支付方式</th>
-					<th width="100">下单金额</th>
-					<th width="100">实际支付金额</th>
+					<th width="100">签约金额</th>
+					<th width="100">免签金额</th>
 					<th >订单号</th>
 					<th >姓名--收款账号--状态</th>
                     <th>下单时间</th>

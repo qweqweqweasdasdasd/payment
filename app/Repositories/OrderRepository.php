@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use DB;
 use App\Order;
+use App\Libs\OrderTool;
 use Illuminate\Support\Facades\Schema;
 
 class OrderRepository extends BaseRepository
@@ -38,6 +39,19 @@ class OrderRepository extends BaseRepository
     {
         $count = (new Order)->setTable($this->getOrdersName($d['pl_id']))->count();
         return $count;
+    }
+
+    //支付成功修改数据库
+    public function paysuccess($order)
+    {
+        return (new Order)->setTable($this->getOrdersName($order['pl_id']))->where('order_no',$order['order_no'])->update(['status'=>OrderTool::PAY_SUCCESS]);
+    }
+
+    //根据订单号从合并表内获取到一个订单信息
+    public function GetOrder($no)
+    {
+        $order = (new Order)->setTable('orders')->where('order_no',$no)->first();
+        return $order;
     }
 
     //使用(平台)分表,自动创建数据表,添加数据
@@ -106,11 +120,14 @@ class OrderRepository extends BaseRepository
             `o_id` int(11) unsigned NOT NULL,
             `pl_id` int(11) DEFAULT '0' COMMENT '平台id',
             `p_id` int(11) DEFAULT '0' COMMENT '支付方式id',
+            `pay_type` varchar(20) DEFAULT '' COMMENT '支付类型',
+            `username` varchar(20) DEFAULT '' COMMENT '用户账号',
             `u_id` int(11) DEFAULT '0' COMMENT '提交用户id',
             `pa_id` int(11) DEFAULT '0' COMMENT '收款账号id',
             `order_amount` varchar(50) DEFAULT '' COMMENT '订单金额',
             `order_no` varchar(100) DEFAULT '' COMMENT '订单号',
             `order_time` int(11) DEFAULT NULL COMMENT '下单时间',
+            `timeout_express` int(11) DEFAULT NULL COMMENT '过期时间',
             `status` tinyint(4) DEFAULT '0' COMMENT '1下单成功 2支付成功 3上分成功 4上分失败 ',
             `real_amount` varchar(50) DEFAULT '' COMMENT '真实金额',
             `bio` varchar(255) DEFAULT '' COMMENT '介绍',
@@ -130,11 +147,14 @@ class OrderRepository extends BaseRepository
             `o_id` int(11) unsigned NOT NULL,
             `pl_id` int(11) DEFAULT '0' COMMENT '平台id',
             `p_id` int(11) DEFAULT '0' COMMENT '支付方式id',
+            `pay_type` varchar(20) DEFAULT '' COMMENT '支付类型',
+            `username` varchar(20) DEFAULT '' COMMENT '用户账号',
             `u_id` int(11) DEFAULT '0' COMMENT '提交用户id',
             `pa_id` int(11) DEFAULT '0' COMMENT '收款账号id',
             `order_amount` varchar(50) DEFAULT '' COMMENT '订单金额',
             `order_no` varchar(100) DEFAULT '' COMMENT '订单号',
             `order_time` int(11) DEFAULT NULL COMMENT '下单时间',
+            `timeout_express` int(11) DEFAULT NULL COMMENT '过期时间',
             `status` tinyint(4) DEFAULT '0' COMMENT '1下单成功 2支付成功 3上分成功 4上分失败 ',
             `real_amount` varchar(50) DEFAULT '' COMMENT '真实金额',
             `bio` varchar(255) DEFAULT '' COMMENT '介绍',

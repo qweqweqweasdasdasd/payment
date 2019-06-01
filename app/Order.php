@@ -9,7 +9,7 @@ class Order extends Model
     protected $primaryKey = 'o_id';
 	protected $table = 'order';
     protected $fillable = [
-    	'pl_id','p_id','u_id','pa_id','order_amount','order_no','order_time','status','real_amount'
+    	'pl_id','p_id','u_id','pa_id','order_amount','order_no','order_time','status','real_amount','username','pay_type','timeout_express'
     ];
 
     //对订单表进行分表

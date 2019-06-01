@@ -23,6 +23,7 @@
 				</div>
 			</div>
 		</div>
+		@if($manager->mg_id != 1)
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">所属角色：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
@@ -33,6 +34,7 @@
 				</select>
 				</span> </div>
 		</div>
+		@if($IsRoot)
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">属于平台：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
@@ -43,6 +45,8 @@
 				</select>
 				</span> </div>
 		</div>
+		@endif
+		@endif
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">备注：</label>
 			<div class="formControls col-xs-8 col-sm-9">

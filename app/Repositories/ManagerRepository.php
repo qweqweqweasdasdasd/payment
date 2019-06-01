@@ -25,17 +25,19 @@ class ManagerRepository extends BaseRepository
     //获取到管理员列表
     public function GetManagers($whereData)
     {
-        return Manager::where(function($query) use($whereData){
+        $managers = Manager::where(function($query) use($whereData){
                 if( !empty($whereData['mg_name']) ){
                     $query->where('mg_name',$whereData['mg_name']);
                 }
-                if( !empty($whereData['r_id']) ){
-                    $query->where('r_id',$whereData['r_id']);
+                if( !empty($whereData['pl_id']) ){
+                    $query->where('pl_id',$whereData['pl_id']);
                 }
             })
             ->with('roles','platform')
             ->orderBy('mg_id','asc')
             ->paginate(9);
+
+        return $managers;
     }
 
     //后期到管理员名称和id

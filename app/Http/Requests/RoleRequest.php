@@ -9,8 +9,8 @@ class RoleRequest extends FormRequest
 {
     protected $rules = [
         'r_name' => 'required|between:2,16|unique:role',
-        'desc' => 'max:255',
-        'status' => 'required|integer'
+        'desc' => 'max:255'
+        // 'status' => 'required|integer'
     ];
 
     protected $messages = [

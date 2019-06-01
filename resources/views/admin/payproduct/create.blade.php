@@ -15,6 +15,12 @@
 			<input type="text" class="input-text" placeholder="请输入产品的名称" value="" name="pay_name" >
 		</div>
     </div>
+		<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-2">支付英文标识：</label>
+		<div class="formControls col-xs-8 col-sm-9" >
+			<input type="text" class="input-text" placeholder="请输入支付英文" value="" name="pay_type" >
+		</div>
+    </div>
     <div class="row cl">
 		<label class="form-label col-xs-4 col-sm-2">产品图片：</label>
 		<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:200px;">

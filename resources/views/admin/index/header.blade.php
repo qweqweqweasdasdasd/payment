@@ -1,6 +1,6 @@
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">
-		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="{{url('/admin/index')}}">{{env('APP_NAME')}}</a>  
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="{{url('/admin/index')}}"> @if(isset($pf->name)) {{$pf->name}} - @endif{{env('APP_NAME')}}</a>  
 			<span class="logo navbar-slogan f-l mr-10 hidden-xs">银行|微信|支付宝</span> 
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 			<nav class="nav navbar-nav">

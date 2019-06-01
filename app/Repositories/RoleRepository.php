@@ -4,10 +4,11 @@ namespace App\Repositories;
 use Auth;
 use App\Role;
 use App\Permission;
+use App\Libs\Platform;
 
 class RoleRepository extends BaseRepository
 {
-
+    use Platform;
     //实例化之后赋值给父类
     public function __construct()
     {
@@ -19,7 +20,9 @@ class RoleRepository extends BaseRepository
     public function GetRoles($d)
     {
         return Role::with(['managers'=>function($query){
-                    $query->select('manager.mg_id','manager.mg_name','manager.r_id');
+                    if($pl_id = $this->GetManagerPlatformId()){
+                        $query->where('pl_id',$pl_id);
+                    }
                 }])
                 ->where(function($query) use($d){
                     if( !empty($d['r_name']) ){

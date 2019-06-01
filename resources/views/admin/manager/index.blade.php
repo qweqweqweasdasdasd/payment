@@ -6,22 +6,27 @@
 <div class="page-container">
 	<form>
     <div class="text-c">
+		@if($IsRoot)
         <span class="select-box inline">
-            <select name="r_id" class="select" style="width:220px;">
-                <option value="0">全部平台</option>
-                <option value="1">分类一</option>
-                <option value="2">分类二</option>
+			<select name="pl_id" class="select" style="width:220px;">
+				<option value="">全部平台</option>
+				@foreach($platformIdAndName as $k=>$v)
+                <option value="{{$k}}" @if($k == $whereData['pl_id']) selected @endif >{{$v}}</option>
+                @endforeach
             </select>
-        </span>
-        <input type="text" name="mg_name"  placeholder=" 管理员" style="width:250px" class="input-text">
+		</span>
+		@endif
+        <input type="text" name="mg_name"  placeholder=" 管理员名称" style="width:250px" class="input-text" value="{{$whereData['mg_name']}}">
 		<button class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
 	</div>
 	</form>
 	<div class="cl pd-5 bg-1 bk-gray mt-20">
     <span class="l">
-        <a href="javascript:;" onclick="setpwd('修改密码','/admin/manager/setpwd')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe63f;</i> 修改密码</a> 
+		<a href="javascript:;" onclick="setpwd('修改密码','/admin/manager/setpwd')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe63f;</i> 修改密码</a> 
+		@if($IsRoot)
         <a href="javascript:;" onclick="add('添加管理员','/admin/manager/create','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加管理员</a>
-    </span>
+		@endif	
+	</span>
      <span class="r">共有数据：<strong>{{$count}}</strong> 条</span> </div>
 	<table class="table table-border table-bordered table-bg">
 		<thead>
@@ -46,14 +51,31 @@
 			<tr class="text-c">
 				<td>{{$v->mg_id}}</td>
 				<td>{{$v->mg_name}}</td>
-				<td>{{$v->roles->r_name}}</td>
-				<td><span class="label label-warning radius">{{$v->platform->name}}</span></td>
+				<td>
+				@if($v->mg_id == 1) 	 
+				<span class="label label-success radius">超级管理员</span>
+				@else 
+				{{$v->roles->r_name}}
+				@endif
+				</td>
+				<td>
+				@if($v->mg_id == 1) 	 
+				<span class="label label-success radius">超级管理员</span>
+				@else 
+				<span class="label label-warning radius">{{$v->platform->name}} </span>
+				@endif
+				</td>
 				<td>{{$v->last_time}}</td>
 				<td>{{$v->login_counts}}</td>
 				<td>{{$v->desc}}</td>
 				<td>{{$v->created_at}}</td>
 				<td class="td-status">{!! CommonStatus($v->status) !!}</td>
-				<td class="td-manage"><a title="编辑" href="javascript:;" onclick="edit('管理员编辑','/admin/manager/{{$v->mg_id}}/edit','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="del(this,'{{$v->mg_id}}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				<td class="td-manage">
+					<a title="编辑" href="javascript:;" onclick="edit('管理员编辑','/admin/manager/{{$v->mg_id}}/edit','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+					@if($v->mg_id != 1)
+					<a title="删除" href="javascript:;" onclick="del(this,'{{$v->mg_id}}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+					@endif
+				</td>
 			</tr>
 			@endforeach
 		</tbody>

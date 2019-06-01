@@ -179,6 +179,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
 
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
     ],
 
     /*
