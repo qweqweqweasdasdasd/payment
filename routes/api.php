@@ -27,10 +27,10 @@ Route::post('/me','Home\UserController@me');
 Route::get('/create','Server\AccountController@GenerateAccount');    //生成收款账号
 
 //支付的逻辑 (1) 获取收款账号 
-Route::get('/get/platform/payproduct/{pl_id}/{p_id}','Server\AccountController@getAccount');      //获取收款账号
+//Route::get('/get/platform/payproduct/{pl_id}/{p_id}','Server\AccountController@getAccount');      //获取收款账号
 
 //支付的逻辑 (2) 生成订单 
-Route::post('/create/platform/order','Server\OrderController@createOrder');    //生成订单号
+//Route::post('/create/platform/order','Server\OrderController@createOrder');    //生成订单号
 
 //支付的逻辑 (3) 请求平台上分接口
 //Route::post('/add/platform/score','Server\ScoreController@add'); //请求平台上分接口
@@ -39,6 +39,8 @@ Route::post('/create/platform/order','Server\OrderController@createOrder');    /
 
 //测试金额
 Route::get('/createUniquAmount','Server\AmountPoolController@createUniquAmount');
+
+
 
 
 
